@@ -56,10 +56,31 @@
             line-height: 1.6;
             white-space: pre-wrap; /* Mantém as quebras de linha da explicação */
         }
+
+        /* --- CÓDIGO CSS ADICIONADO PARA O BOTÃO --- */
+        .back-button {
+            display: inline-block;
+            margin-bottom: 30px;
+            padding: 10px 20px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #004494;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        
+        <a href="/" class="back-button">← Analisar Outro Ativo</a>
+
         <h1>Análise Técnica para <strong>{{ ticker }}</strong></h1>
         
         <img src="{{ url_grafico }}" alt="Gráfico de Análise para {{ ticker }}">
