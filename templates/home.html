@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Ativos Financeiros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            color: #0056b3;
+            margin-bottom: 30px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-align: left;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; 
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #004494;
+        }
+        .separator {
+            margin: 20px 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Análise de Ativos Financeiros</h1>
+        <form id="analise-form">
+            <label for="ticker-input">Digite o Ticker do Ativo:</label>
+            <input type="text" id="ticker-input" placeholder="Ex: AAPL, PETR4.SA, BTC-USD">
+
+            <div class="separator">OU</div>
+
+            <label for="ticker-select">Escolha um exemplo:</label>
+            <select id="ticker-select">
+                <option value="">-- Selecione uma opção --</option>
+                <option value="PETR4.SA">Petrobras (B3)</option>
+                <option value="VALE3.SA">Vale (B3)</option>
+                <option value="AAPL">Apple (EUA)</option>
+                <option value="TSLA">Tesla (EUA)</option>
+                <option value="BTC-USD">Bitcoin (Cripto)</option>
+                <option value="ETH-USD">Ethereum (Cripto)</option>
+            </select>
+            
+            <button type="submit">Gerar Relatório</button>
+        </form>
+    </div>
+
+    <script>
+        
+        document.getElementById('analise-form').addEventListener('submit', function(event) {
+            
+            event.preventDefault(); 
+            
+            // Pega os valores do campo de texto e do seletor
+            let tickerInput = document.getElementById('ticker-input').value.trim();
+            let tickerSelect = document.getElementById('ticker-select').value;
+            
+            let tickerFinal = tickerInput ? tickerInput : tickerSelect;
+            
+            if (tickerFinal) {
+                window.location.href = '/relatorio/' + tickerFinal;
+            } else {
+                alert('Por favor, digite um ticker ou selecione uma opção.');
+            }
+        });
+    </script>
+</body>
+</html>
