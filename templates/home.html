@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Análise de Ativos Financeiros</title>
+    <title>Analisador de Ativos Financeiros</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -65,7 +65,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Análise de Ativos Financeiros</h1>
+        <h1>Analisador de Ativos Financeiros</h1>
         <form id="analise-form">
             <label for="ticker-input">Digite o Ticker do Ativo:</label>
             <input type="text" id="ticker-input" placeholder="Ex: AAPL, PETR4.SA, BTC-USD">
@@ -89,15 +89,29 @@
 
     <script>
         
-        document.getElementById('analise-form').addEventListener('submit', function(event) {
-            
+        const form = document.getElementById('analise-form');
+        const tickerInput = document.getElementById('ticker-input');
+        const tickerSelect = document.getElementById('ticker-select');
+
+        
+        tickerSelect.addEventListener('change', function() {
+          
+            if (tickerSelect.value !== "") {
+                tickerInput.value = '';
+            }
+        });
+
+        tickerInput.addEventListener('input', function() {
+           
+            tickerSelect.selectedIndex = 0;
+        });
+
+       
+        form.addEventListener('submit', function(event) {
+   
             event.preventDefault(); 
-            
-            // Pega os valores do campo de texto e do seletor
-            let tickerInput = document.getElementById('ticker-input').value.trim();
-            let tickerSelect = document.getElementById('ticker-select').value;
-            
-            let tickerFinal = tickerInput ? tickerInput : tickerSelect;
+        
+            let tickerFinal = tickerInput.value.trim() || tickerSelect.value;
             
             if (tickerFinal) {
                 window.location.href = '/relatorio/' + tickerFinal;
