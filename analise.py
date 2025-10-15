@@ -60,7 +60,7 @@ def gerar_analise(ticker: str):
 
     # 4. Geração do Gráfico
     dados_grafico = dados.tail(180)
-    
+
     caminho_grafico = f"static/grafico_{ticker.replace('.', '_').upper()}.png"
 
     mpf.plot(dados_grafico,
