@@ -5,7 +5,6 @@ from datetime import datetime, timedelta
 import os
 
 def gerar_explicacao_grafico(ticker: str, estatisticas: dict):
-    """Gera uma explicação em texto sobre a análise do ativo."""
     ultimo_preco = estatisticas['ultimo_valor']
     mediana_preco = estatisticas['mediana']
     
